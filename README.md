@@ -107,12 +107,13 @@ __Yes! We need to finish lines with semicolons!!!! 😏__
     let e: f64 = 1.0;
     let f: bool = true;
 
-#### String, string slice and chars
+#### String, string slice, chars, Vectors
 
     let s1: &str = "hello";
     let s2: String = String::from("hello");
     let c1: char = 'a';
     let c2: char = '😊';
+    let v: Vec<char> = Vec::new();
 
 #### Structures
     struct Person {
@@ -127,6 +128,17 @@ Initializing a structure
         age: 20,
     };
 
+#### Enums
+
+    enum Profession {
+        ProductOwner,
+        ScrumMaster,
+        Developer(String),
+        UxDesigner,
+        UiDesgner,
+    }
+
+#### Traits
 
 Rust does not have classes, but structures can implement _traits_. Traits are like protocols in Swift.
 
@@ -164,3 +176,16 @@ Rust does not have classes, but structures can implement _traits_. Traits are li
     // Using a macro
     hello!();
 
+
+### Functions
+
+    fn foo(number: i32) -> i32 {
+        let new_number = number * 42;
+        new_number // <= no semicolon here
+    }
+
+### Built-in features
+
+#### Lint
+    #[allow(unused_variables)]
+    #[allow(dead_code)]
