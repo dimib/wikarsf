@@ -73,19 +73,94 @@ Crates can be added as dependencies in the program's `Cargo.toml`.
     rand = "0.8"
     gray_matter = "0.2"
 
-# Learn more
+# Look, listen and learn
+
+Offical documeintation on `doc.rust-lang.org`
 
 [read the book](https://doc.rust-lang.org/book/)
 
 [rust-by-example](https://doc.rust-lang.org/rust-by-example/)
 
+Other sources
+
 [Let's get rusty - YouTube](https://www.youtube.com/@letsgetrusty)
 
 # Let's code!
 
-### Hello Rust
+
+
+    // Hello Rust!
 
     fn main() {
         println!("Hello, world!");
     }
+
+__Yes! We need to finish lines with semicolons!!!! 😏__
+
+### Data types
+
+#### Numeric types and boolean
+    let a: i8 = 2;
+    let b: i32 = 1;
+    let c: i64 = 1;
+    let d: f32 = 1.0;
+    let e: f64 = 1.0;
+    let f: bool = true;
+
+#### String, string slice and chars
+
+    let s1: &str = "hello";
+    let s2: String = String::from("hello");
+    let c1: char = 'a';
+    let c2: char = '😊';
+
+#### Structures
+    struct Person {
+        name: String,
+        age: u8,
+    }
+
+Initializing a structure
+
+    let p = Person {
+        name: String::from("John"),
+        age: 20,
+    };
+
+
+Rust does not have classes, but structures can implement _traits_. Traits are like protocols in Swift.
+
+    // Sample Printable trait
+    trait Printable {
+        fn print(&self);
+    }
+
+    // Implementation of Printable for Person
+    impl Printable for Person {
+        fn print(&self) {
+            println!("{} {}", self.name, self.age);
+        }
+    }
+
+    // Using Person and print internal properties.
+    fn main() {
+        let p = Person {
+            name: String::from("John"),
+            age: 20,
+        };
+
+        p.print();
+    }
+
+### Using Macros
+
+    // Defining a macro
+    macro_rules! hello {
+        () => {
+            println!("Hello, World!");
+        };
+    }
+
+    // Using a macro
+    hello!();
 
