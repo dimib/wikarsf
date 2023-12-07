@@ -1,38 +1,45 @@
 // MD-Tokens
 // A simple markdown token reader written in Rust
 
-use std::str;
-
 pub struct Tag {
-    pub name: Box<str>,
-    pub token: Box<str>,
-    pub ends: Box<str>,
-    pub html: Box<str>,
-    pub html_ends: Box<str>,
+    pub name: String,
+    pub token: String,
+    pub ends: String,
+    pub html: String,
+    pub html_ends: String,
 }
 
 pub enum Token {
-    TagBegin,
-    TagEnd,
-    Text,
+    TagBegin(Tag),
+    TagEnd(Tag),
+    Text(String),
 }
 
-pub const tags: [Tag] = [
-    Tag { name: "h1", token: "# ", ends: "\n", html: "<h1>", html_ends: "</h1>" },
-    Tag { name: "h2", token: "## ", ends: "\n", html: "<h2>", html_ends: "</h2>" },
-    Tag { name: "h3", token: "### ", ends: "\n", html: "<h3>", html_ends: "</h3>" },
-    Tag { name: "h4", token: "#### ", ends: "\n", html: "<h4>", html_ends: "</h4>" },
-    Tag { name: "h5", token: "##### ", ends: "\n", html: "<h5>", html_ends: "</h5>" },
-    Tag { name: "h6", token: "###### ", ends: "\n", html: "<h6>", html_ends: "</h6>" },
-    Tag { name: "code", token: "`", ends: "`", html: "<code>", html_ends: "</code>" },
-    Tag { name: "italic", token: "*", ends: "*", html: "<i>", html_ends: "</i>" },
-    Tag { name: "italic", token: "_", ends: "_", html: "<i>", html_ends: "</i>" },
-    Tag { name: "bold", token: "**", ends: "**", html: "<b>", html_ends: "</b>" },
-    Tag { name: "bold", token: "__", ends: "__", html: "<b>", html_ends: "</b>" },
-    Tag { name: "bolditalic", token: "***", ends: "***", html: "<b><i>", html_ends: "</i></b>" },
-    Tag { name: "bolditalic", token: "___", ends: "___", html: "<b><i>", html_ends: "</i></b>" },
-    Tag { name: "del", token: "~~", ends: "~~", html: "<del>", html_ends: "</del>" },
-];
+macro_rules! S {
+    ($expression:expr) => {
+        String::from($expression)
+    };
+}
 
+pub static TAGS: Vec<Tag> = Vec::new();
+
+pub fn makeTags() -> Vec<Tag> {
+    return vec![
+        Tag { name: S!("h1"), token: S!("# "), ends: S!("\n"), html: S!("<h1>"), html_ends: S!("</h1>") },
+        Tag { name: S!("h2"), token: S!("## "), ends: S!("\n"), html: S!("<h2>"), html_ends: S!("</h2>") },
+        Tag { name: S!("h3"), token: S!("### "), ends: S!("\n"), html: S!("<h3>"), html_ends: S!("</h3>") },
+        Tag { name: S!("h4"), token: S!("#### "), ends: S!("\n"), html: S!("<h4>"), html_ends: S!("</h4>") },
+        Tag { name: S!("h5"), token: S!("##### "), ends: S!("\n"), html: S!("<h5>"), html_ends: S!("</h5>") },
+        Tag { name: S!("h6"), token: S!("###### "), ends: S!("\n"), html: S!("<h6>"), html_ends: S!("</h6>") },
+        Tag { name: S!("code"), token: S!("`"), ends: S!("`"), html: S!("<code>"), html_ends: S!("</code>") },
+        Tag { name: S!("italic"), token: S!("*"), ends: S!("*"), html: S!("<i>"), html_ends: S!("</i>") },
+        Tag { name: S!("italic"), token: S!("_"), ends: S!("_"), html: S!("<i>"), html_ends: S!("</i>") },
+        Tag { name: S!("bold"), token: S!("**"), ends: S!("**"), html: S!("<b>"), html_ends: S!("</b>") },
+        Tag { name: S!("bold"), token: S!("__"), ends: S!("__"), html: S!("<b>"), html_ends: S!("</b>") },
+        Tag { name: S!("bolditalic"), token: S!("***"), ends: S!("***"), html: S!("<b><i>"), html_ends: S!("</i></b>") },
+        Tag { name: S!("bolditalic"), token: S!("___"), ends: S!("___"), html: S!("<b><i>"), html_ends: S!("</i></b>") },
+        Tag { name: S!("del"), token: S!("~~"), ends: S!("~~"), html: S!("<del>"), html_ends: S!("</del>") },
+    ];
+}
 
 
