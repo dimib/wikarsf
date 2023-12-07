@@ -189,3 +189,9 @@ Rust does not have classes, but structures can implement _traits_. Traits are li
 #### Lint
     #[allow(unused_variables)]
     #[allow(dead_code)]
+
+# Strange Rust concepts
+
+### Module system
+### Lifetime declaration
+### Optionals

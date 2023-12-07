@@ -72,27 +72,27 @@ impl MdContentReader for MdContent {
 }
 
 // Try to find one of the supported start tags at the given index.
-fn find_start_tag_at_index(content: &String, index: usize) -> Option<Tag> {
+fn find_start_tag_at_index(content: &String, index: usize) -> Option<&Tag> {
     let mut tag: Option<&Tag> = None;
 
     for t in tokens::TAGS.iter() {
         if content[index..].starts_with(&t.token) {
-            tag = Some(t.to_owned());
+            tag = Some(t);
             break;
         }
     }
-    None
+    tag
 }
 
 // Try to find one of the supported end tags at the given index.
-fn find_end_tag_at_index(content: &String, index: usize) -> Option<Tag> {
+fn find_end_tag_at_index(content: &String, index: usize) -> Option<&Tag> {
     let mut tag: Option<&Tag> = None;
 
     for t in tokens::TAGS.iter() {
         if content[index..].starts_with(&t.ends) {
-            tag = Some(t.to_owned());
+            tag = Some(t);
             break;
         }
     }
-    None
+    tag
 }

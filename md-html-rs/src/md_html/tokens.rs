@@ -9,9 +9,9 @@ pub struct Tag {
     pub html_ends: String,
 }
 
-pub enum Token {
-    TagBegin(Tag),
-    TagEnd(Tag),
+pub enum Token<'a> {
+    TagBegin(&'a Tag),
+    TagEnd(&'a Tag),
     Text(String),
 }
 
