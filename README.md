@@ -202,4 +202,6 @@ A link or pointer to an instruction, table element, index item, etc. that no lon
 
 `fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str { }`
 
+https://www.youtube.com/watch?v=juIINGuZyBc
+
 ### Optionals
