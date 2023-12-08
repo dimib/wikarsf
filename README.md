@@ -194,4 +194,12 @@ Rust does not have classes, but structures can implement _traits_. Traits are li
 
 ### Module system
 ### Lifetime declaration
+
+What is dangling reference?
+
+
+A link or pointer to an instruction, table element, index item, etc. that no longer contains the same content. If the reference is not a currently valid address, or if it is valid but there is no content in that location, it may cause the computer to crash if the software is not programmed carefully.
+
+`fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str { }`
+
 ### Optionals
