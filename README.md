@@ -79,6 +79,8 @@ Offical documeintation on `doc.rust-lang.org`
 
 [read the book](https://doc.rust-lang.org/book/)
 
+This is also installed with rustup. Read the offline book with `rustup docs --book`.
+
 [rust-by-example](https://doc.rust-lang.org/rust-by-example/)
 
 Other sources
