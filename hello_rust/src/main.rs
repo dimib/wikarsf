@@ -39,6 +39,20 @@ macro_rules! hello {
 
 fn main() {
     hello!();
+    ownership_explained();
+
+    let my_optional = optional_value(true);
+    if let Some(value) = my_optional {
+        println!("{}", value);
+    }
+
+    match my_optional {
+        Some(value) => println!("{}", value),
+        None => println!("No value"),
+    }
+
+    let my_other_optional = optional_value(true).expect("No value");
+    println!("{}", my_other_optional);
 
     let a: i8 = 2;
     let b: i32 = 1;
@@ -71,4 +85,25 @@ fn main() {
 fn foo(number: i32) -> i32 {
     let new_number = number * 42;
     new_number
+}
+
+fn ownership_explained() {
+    let mut s1 = String::from("Hello");
+    take_ownershop(&mut s1);
+    s1.push_str(" World");
+
+    take_ownershop(&mut s1);
+}
+
+fn take_ownershop(some_string: &mut String) {
+    some_string.push_str(" World");
+    println!("{:?}", some_string);
+}
+
+fn optional_value(yes: bool) -> Option<&'static str> {
+    if yes {
+        Some("Yes")
+    } else {
+        None
+    }
 }
