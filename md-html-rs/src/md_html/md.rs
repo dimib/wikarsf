@@ -19,7 +19,6 @@ pub fn read_content_from_file(path: &String) -> MdContent {
 }
 
 pub fn parse(content: &mut MdContent) -> Option<LinkedList<Token>> {
-    let mut md_content = &content;
     let token = tokenize(content);
     Some(token)
 }

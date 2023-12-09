@@ -1,0 +1,72 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: very-large;
+    margin-top: 2ch;
+}
+
+h2 {
+    font-size: larger;
+    margin-top: 2ch
+}
+
+h3 {
+    font-size: large;
+}
+
+h4 {
+    font-size: medium;
+}
+
+h5 {
+    font-size: small;
+}
+
+h6 {
+    font-size: small;
+}
+
+code {
+    font-family: monospace;
+    font-size: large;
+    font-style: bold;
+    color:beige;
+}
+
+.codeblock {
+    font-family: monospace;
+    background-color: darkslategrey;
+    font-size: large;
+    font-style: bold;
+    color:beige;
+    padding: 2ch;
+    margin-left: 2ch;
+    margin-right: 2ch;
+    width: 80%;
+    border-radius: 9px;
+}
+
+br {
+    display: block;
+    margin: 10em 0;
+    line-height: 2.5em;
+ }
+
+ a {
+    color: white;
+    text-decoration: underline;
+ }
+
+ a :hover {
+    color: red;
+    text-decoration: underline;
+ }
+
+a :visited {
+    color: rgb(121, 121, 121);
+    text-decoration: underline;
+}
