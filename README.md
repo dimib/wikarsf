@@ -195,6 +195,15 @@ Rust does not have classes, but structures can implement _traits_. Traits are li
 # Strange Rust concepts
 
 ### Module system
+
+#### Some help with modules
+
+[Cargo Modules](https://crates.io/crates/cargo-modules)
+
+`cargo install cargo-modules`
+
+`cargo modules generate tree`
+
 ### Lifetime declaration
 
 What is dangling reference?

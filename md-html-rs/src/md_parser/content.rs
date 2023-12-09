@@ -16,8 +16,8 @@ pub struct MdContent {
     pub content_len: usize,
     pub index: usize,
 }
-impl MdContentReader for MdContent {
 
+impl MdContentReader for MdContent {
     // Returns the next char from content.
     fn next_char(&mut self) -> Option<char> {
         if self.index < self.content_len {

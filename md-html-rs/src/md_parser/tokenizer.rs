@@ -1,7 +1,6 @@
 // This is the main tokenizer for the markdown parser.
 
 use std::collections::LinkedList;
-use std::rc::Rc;
 use super::MdContent;
 use super::Token;
 
@@ -102,6 +101,7 @@ fn tag_from_reference(tag: &Tag) -> Tag {
         ends: tag.ends.clone(),
         html: tag.html.clone(),
         html_ends: tag.html_ends.clone(),
+        ignore_tags: tag.ignore_tags.clone(),
     };
     new_tag
 }
