@@ -3,13 +3,12 @@
 
 pub mod content;
 pub mod file;
-pub mod tokens;
-mod tokenizer;
+pub mod tokenizer;
 
 use std::collections::LinkedList;
 use content::MdContent;
 use tokenizer::tokenize;
-use tokens::Token;
+use super::common::tokens::Token;
 
 use file::read;
 

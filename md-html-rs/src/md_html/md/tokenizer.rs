@@ -2,12 +2,12 @@
 
 use std::collections::LinkedList;
 use super::MdContent;
-use super::Token;
+use crate::md_html::common::tokens::Token;
 
-use crate::md_parser::content::MdContentReader;
+use crate::md_html::md::content::MdContentReader;
 
-use crate::md_parser::tokens::TAGS;
-use crate::md_parser::tokens::Tag;
+use crate::md_html::common::tokens::TAGS;
+use crate::md_html::common::tokens::Tag;
 
 // Tokenize content in the specified content.
 pub fn tokenize(md_content: &mut MdContent) -> LinkedList<Token> {

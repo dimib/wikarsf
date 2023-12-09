@@ -1,10 +1,10 @@
 // MD-HTML-RS
 // A simple markdown to html converter written in Rust
 
-use std::env;
-mod md_parser;
+mod md_html;
 
-use crate::md_parser::{read_content_from_file, parse, tokens};
+use std::env;
+use crate::md_html::md::{read_content_from_file, parse};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
