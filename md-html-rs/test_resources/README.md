@@ -302,4 +302,95 @@ https://www.youtube.com/watch?v=juIINGuZyBc
 
 ## Optionals
 
-Ende
+Rust has Optionals but they are not integrated into the language as seamlessly as in Swift.
+
+```
+fn main() {
+
+    let my_optional = optional_value(true);
+    if let Some(value) = my_optional {
+        println!("{}", value);
+    }
+
+    match my_optional {
+        Some(value) => println!("{}", value),
+        None => println!("No value"),
+    }
+
+    let my_other_optional = optional_value(true).expect("No value");
+    println!("{}", my_other_optional);
+
+}
+
+fn optional_value(yes: bool) -> Option<&'static str> {
+    if yes {
+        Some("Yes")
+    } else {
+        None
+    }
+}
+
+```
+
+
+# Multiplatform
+
+Rust can compile binaries for may different targets. The supported targets can be listed with `rustup target list`.
+
+```
+user@mac ~ % rustup target list
+aarch64-apple-darwin (installed)
+aarch64-apple-ios (installed)
+aarch64-apple-ios-sim
+aarch64-linux-android
+...
+
+user@mac ~ % rustup target add aarch64-apple-ios-sim
+
+```
+
+That make Rust a good opportunity for cross- or multiplatform development.
+
+### How does it work
+
+Create a new rust library, for example
+
+`cargo init rs-xcode --lib`
+
+Add the following lines to the `Cargo.toml` file:
+
+```
+[lib]
+crate-type = ["lib", "staticlib"]
+```
+
+Now create static lib
+
+```
+cargo rustc -- --print native-static-libs
+
+note: Link against the following native artifacts when linking against this static library. The order and any duplication can be significant on some platforms.
+
+note: native-static-libs: -lSystem -lc -lm
+
+```
+
+Now lets test it with a simple "C" program `hello-rust.c`:
+
+```
+// Decleare reference to hello_from_rust()
+
+extern void hello_from_rust();
+
+int main(int argc, char **argv) {
+    hello_from_rust();
+    return 0;
+}
+```
+
+Build with
+
+`cc hello-rust.c ../rs-xcode/target/debug/librs_xcode.a -lSystem -lresolv -lc -lm -o hello-rust`
+
+### How does it work with Xcode
+
