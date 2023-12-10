@@ -127,6 +127,7 @@ fn is_empty_line(content: &MdContent) -> bool {
     false
 }
 
+#[allow(dead_code)]
 fn is_begin_of_line(content: &MdContent) -> bool {
     let index = content.index;
     let before_index = index - 1;

@@ -6,6 +6,13 @@ version = 3
 name = "md-html-rs"
 version = "0.1.0"
 dependencies = [
+ "md_html",
+]
+
+[[package]]
+name = "md_html"
+version = "0.1.0"
+dependencies = [
  "once_cell",
 ]
 

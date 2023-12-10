@@ -1,5 +1,5 @@
 pub mod md;
-//pub mod html;
+pub mod html;
 pub mod common;
 
 #[cfg(test)]
