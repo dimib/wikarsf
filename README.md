@@ -1,9 +1,13 @@
 # What I know about Rust... so far!
 
+### What is Rust?
 
-### Multipurpose System Programming Language
+Rust is a _Multipurpose System Programming Language_ with target on System Programming.
+It can be seen as a replacement for the programming language "C" and maybe "C++". The
+biggest advantange of Rust towards "C" is its robust and secure memory management.
+Rust comes with a number of strange concepts, that increases the learning curve.
 
-![](rust-logo-gray.svg)
+![](rust-logo-gray.png)
 
 __Invented__: at Mozilla
 
@@ -19,7 +23,27 @@ __Compiler__: based on LLVM compiler framework
 
 __Web__: https://www.rust-lang.org
 
+### Why Rust?
 
+I was searching for a programming language to create my own programming language. I was
+thinking about using "C++", but the language I want to create has unicode expressions,
+so I was looking for something that can handle unicode strings by default.
+
+But it should not be _Swift_.
+
+I heard about Rust some years ago on a CocoaHeads talk about [Hyperdeck](https://hyperdeck.io) which uses Rust for parsing and some other stuff. So I wanted to give it a try.
+
+During my investigations I found out some more about Rust:
+
+Rust has become the no 1 choice of Microsoft for rebuilding Windows kernel code.
+
+Rust is the second language after "C" that is allowed in Linux kernel code.
+
+Figma replaces the code for the collaboration platform with Rust and notices a big performance increase by using less resources.
+
+Dropbox rewrites a lot of code for file sharing with Rust.
+
+And more...
 
 # Installation (very easy)
 
@@ -27,11 +51,11 @@ __Web__: https://www.rust-lang.org
 
 https://www.rust-lang.org/tools/install
 
-
-    $ rustup help
-    rustup 1.26.0 (5af9b9484 2023-04-05)
-    The Rust toolchain installer
-
+```
+$ rustup help
+rustup 1.26.0 (5af9b9484 2023-04-05)
+The Rust toolchain installer
+```
 
 Will be installed in `$HOME/.rustup` (1.2GB)
 
@@ -56,14 +80,14 @@ $ cargo init hello_world
 ```
 $ cargo build
 ```
-
 #### Run a Rust program
 
 ```
 $ cargo run
 ```
 
-#### The Rust community’s crate registry
+
+#### The Rust community's crate registry
 
 It's not necessary to program everything from scatch. Explore crates at [crates.io](https://crates.io)
 
@@ -105,7 +129,8 @@ fn main() {
     println!("Hello, world!");
 }
 ```
-__Yes! We need to finish lines with semicolons!!!! 😏__
+
+_Yes! We need to finish lines with semicolons!!!!_
 
 ### Data types
 
@@ -125,7 +150,6 @@ let f: bool = true;
 let s1: &str = "hello";
 let s2: String = String::from("hello");
 let c1: char = 'a';
-let c2: char = '😊';
 let v: Vec<char> = Vec::new();
 ```
 
@@ -190,19 +214,36 @@ fn main() {
 ### Using Macros
 
 ```
-// Defining a macro
+// Defining a simple macro
 macro_rules! hello {
     () => {
         println!("Hello, World!");
     };
 }
-```
 
-// Using a macro
-```
+// Using a the macro
+
 hello!();
 ```
 
+Macros can take parameters that will be used inside the code. As far as I could see,
+the ownership / borrowing mechanism does not apply on macros.
+
+
+```
+// Defining a marcro with expressions
+macro_rules! hello_user {
+    ($user:expr) => {
+        println!("Hello, {}", $user);
+    };
+}
+
+// Using the macro
+
+hello!("Paul");
+```
+
+Macros must be defined or declared in the source file before they can be used.
 ### Functions
 
 ```
@@ -222,17 +263,33 @@ fn foo(number: i32) -> i32 {
 
 # Strange Rust concepts
 
-### Module system
+## Module system
 
-#### Some help with modules
-
+Some help with modules can be found here
 [Cargo Modules](https://crates.io/crates/cargo-modules)
+
+This is a cargo extension that prints a module tree.
 
 `cargo install cargo-modules`
 
 `cargo modules generate tree`
 
-### Lifetime declaration
+## Ownership and borrowing
+
+Rust implements a system of ownership and borrowing mechanism that prevents using variables at differnt places. Example:
+
+```
+fn ownership_explained() {
+    let mut s1 = String::from("Hello");
+    let mut s2 = s1; // s1 is moved to s2
+
+    s1.push_str(" world");
+    println!("{:?}", s1);
+    println!("{:?}", s2);
+}
+```
+
+## Lifetime declaration
 
 What is dangling reference?
 
@@ -243,6 +300,6 @@ A link or pointer to an instruction, table element, index item, etc. that no lon
 
 https://www.youtube.com/watch?v=juIINGuZyBc
 
-### Optionals
+## Optionals
 
 Ende

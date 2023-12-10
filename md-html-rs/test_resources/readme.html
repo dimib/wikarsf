@@ -1,0 +1,209 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="md_html.css">
+<title>MD-HTML-RS</title>
+</head>
+<body>
+<h1>What I know about Rust... so far!</h1><hr/>
+<h3>What is Rust?</h3>
+Rust is a <i>Multipurpose System Programming Language</i> with target on System Programming.
+It can be seen as a replacement for the programming language "C" and maybe "C++". The
+biggest advantange of Rust towards "C" is its robust and secure memory management.
+Rust comes with a number of strange concepts, that increases the learning curve.<br><br>
+<img src="rust-logo-gray.png" alt="" /><br><br>
+<b>Invented</b>: at Mozilla<br><br>
+<b>Year</b>: 2010, first stable Version in 2015<br><br>
+<b>Current Version</b>: 1.73.0<br><br>
+<b>Pardigms</b>: Concurrent, functional, generic, imperative, structured<br><br>
+<b>Replaces</b>: C/C++ in Windows, Android, Linux and others<br><br>
+<b>Compiler</b>: based on LLVM compiler framework<br><br>
+<b>Web</b>: <a href="https://www.rust-lang.org" target="_">https://www.rust-lang.org</a><br><br>
+<h3>Why Rust?</h3>
+I was searching for a programming language to create my own programming language. I was
+thinking about using "C++", but the language I want to create has unicode expressions,
+so I was looking for something that can handle unicode strings by default.<br><br>
+But it should not be <i>Swift</i>.<br><br>
+I heard about Rust some years ago on a CocoaHeads talk about <a href="https://hyperdeck.io" target="_">Hyperdeck</a> which uses Rust for parsing and some other stuff. So I wanted to give it a try.<br><br>
+During my investigations I found out some more about Rust:<br><br>
+Rust has become the no 1 choice of Microsoft for rebuilding Windows kernel code.<br><br>
+Rust is the second language after "C" that is allowed in Linux kernel code.<br><br>
+Figma replaces the code for the collaboration platform with Rust and notices a big performance increase by using less resources.<br><br>
+Dropbox rewrites a lot of code for file sharing with Rust.<br><br>
+And more...<br><br>
+<h1>Installation (very easy)</h1><hr/>
+<h3>See Rust website for installation instructions</h3>
+<a href="https://www.rust-lang.org/tools/install" target="_">https://www.rust-lang.org/tools/install</a><br><br>
+<code><pre><div class="codeblock">$ rustup help
+rustup 1.26.0 (5af9b9484 2023-04-05)
+The Rust toolchain installer
+</div></pre></code><br><br>
+Will be installed in <code>$HOME/.rustup</code> (1.2GB)<br><br>
+<h3>Visual Studio Code Extensions for Rust</h3>
+<a href="https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer" target="_">rust-analyzer</a><br><br>
+<a href="https://marketplace.visualstudio.com/items?itemName=1YiB.rust-bundle" target="_">rust extension</a><br><br>
+<a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot" target="_">github copilot</a><br><br>
+<h3>Package manager <b>Cargo</b></h3>
+<h4>Create a new Rust project</h4>
+<code><pre><div class="codeblock">$ cargo init hello_world
+</div></pre></code><br><br>
+<h4>Build a Rust program (crate)</h4>
+<code><pre><div class="codeblock">$ cargo build
+</div></pre></code>
+<h4>Run a Rust program</h4>
+<code><pre><div class="codeblock">$ cargo run
+</div></pre></code><br><br>
+
+<h4>The Rust community's crate registry</h4>
+It's not necessary to program everything from scatch. Explore crates at <a href="https://crates.io" target="_">crates.io</a><br><br>
+Crates can be added as dependencies in the program's <code>Cargo.toml</code>. <br><br>
+<code><pre><div class="codeblock">[dependencies]
+wry = {version = "0.23"}
+tokio = { version = "1", features = ["full"] }
+warp = {version = "0.3"}
+pulldown-cmark = { version = "0.9", default-features = false }
+notify = {version = "5.0"}
+rust-embed = {version = "6.4.0"}
+rand = "0.8"
+gray_matter = "0.2"
+</div></pre></code><br><br>
+<h1>Look, listen and learn</h1><hr/>
+Offical documeintation on <code>doc.rust-lang.org</code><br><br>
+<a href="https://doc.rust-lang.org/book/" target="_">read the book</a><br><br>
+This is also installed with rustup. Read the offline book with <code>rustup docs --book</code>.<br><br>
+<a href="https://doc.rust-lang.org/rust-by-example/" target="_">rust-by-example</a><br><br>
+Other sources<br><br>
+<a href="https://www.youtube.com/@letsgetrusty" target="_">Let's get rusty - YouTube</a><br><br>
+<h1>Let's code!</h1><hr/><br><br>
+<code><pre><div class="codeblock">// Hello Rust!
+
+fn main() {
+    println!("Hello, world!");
+}
+</div></pre></code><br><br>
+<i>Yes! We need to finish lines with semicolons!!!!</i><br><br>
+<h3>Data types</h3>
+<h4>Numeric types and boolean</h4><code><pre><div class="codeblock">let a: i8 = 2;
+let b: i32 = 1;
+let c: i64 = 1;
+let d: f32 = 1.0;
+let e: f64 = 1.0;
+let f: bool = true;
+</div></pre></code><br><br>
+<h4>String, string slice, chars, Vectors</h4>
+<code><pre><div class="codeblock">let s1: &str = "hello";
+let s2: String = String::from("hello");
+let c1: char = 'a';
+let v: Vec<char> = Vec::new();
+</div></pre></code><br><br>
+<h4>Structures</h4>
+<code><pre><div class="codeblock">struct Person {
+    name: String,
+    age: u8,
+}
+</div></pre></code><br><br>
+Initializing a structure<br><br>
+<code><pre><div class="codeblock">let p = Person {
+    name: String::from("John"),
+    age: 20,
+};
+</div></pre></code><br><br>
+<h4>Enums</h4>
+<code><pre><div class="codeblock">enum Profession {
+    ProductOwner,
+    ScrumMaster,
+    Developer(String),
+    UxDesigner,
+    UiDesgner,
+}
+</div></pre></code><br><br>
+<h4>Traits</h4>
+Rust does not have classes, but structures can implement <i>traits</i>. Traits are like protocols in Swift.<br><br>
+<code><pre><div class="codeblock">// Sample Printable trait
+trait Printable {
+    fn print(&self);
+}
+
+// Implementation of Printable for Person
+impl Printable for Person {
+    fn print(&self) {
+        println!("{} {}", self.name, self.age);
+    }
+}
+
+// Using Person and print internal properties.
+fn main() {
+    let p = Person {
+        name: String::from("John"),
+        age: 20,
+    };
+
+    p.print();
+}
+</div></pre></code><br><br>
+<h3>Using Macros</h3>
+<code><pre><div class="codeblock">// Defining a simple macro
+macro_rules! hello {
+    () => {
+        println!("Hello, World!");
+    };
+}
+
+// Using a the macro
+
+hello!();
+</div></pre></code><br><br>
+Macros can take parameters that will be used inside the code. As far as I could see,
+the ownership / borrowing mechanism does not apply on macros.<br><br>
+
+<code><pre><div class="codeblock">// Defining a marcro with expressions
+macro_rules! hello_user {
+    ($user:expr) => {
+        println!("Hello, {}", $user);
+    };
+}
+
+// Using the macro
+
+hello!("Paul");
+</div></pre></code><br><br>
+Macros must be defined or declared in the source file before they can be used.
+<h3>Functions</h3>
+<code><pre><div class="codeblock">fn foo(number: i32) -> i32 {
+    let new_number = number * 42;
+    new_number // <= no semicolon here
+}
+</div></pre></code>
+<h3>Built-in features</h3>
+<h4>Lint</h4>
+<code><pre><div class="codeblock">#[allow(unused_variables)]
+#[allow(dead_code)]
+</div></pre></code><br><br>
+<h1>Strange Rust concepts</h1><hr/>
+<h2>Module system</h2>
+Some help with modules can be found here
+<a href="https://crates.io/crates/cargo-modules" target="_">Cargo Modules</a><br><br>
+This is a cargo extension that prints a module tree.<br><br>
+<code>cargo install cargo-modules</code><br><br>
+<code>cargo modules generate tree</code><br><br>
+<h2>Ownership and borrowing</h2>
+Rust implements a system of ownership and borrowing mechanism that prevents using variables at differnt places. Example:<br><br>
+<code><pre><div class="codeblock">fn ownership_explained() {
+    let mut s1 = String::from("Hello");
+    let mut s2 = s1; // s1 is moved to s2
+
+    s1.push_str(" world");
+    println!("{:?}", s1);
+    println!("{:?}", s2);
+}
+</div></pre></code><br><br>
+<h2>Lifetime declaration</h2>
+What is dangling reference?<br><br>
+
+A link or pointer to an instruction, table element, index item, etc. that no longer contains the same content. If the reference is not a currently valid address, or if it is valid but there is no content in that location, it may cause the computer to crash if the software is not programmed carefully.<br><br>
+<code>fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str { }</code><br><br>
+<a href="https://www.youtube.com/watch?v=juIINGuZyBc" target="_">https://www.youtube.com/watch?v=juIINGuZyBc</a><br><br>
+<h2>Optionals</h2>
+Ende</body>
+</html>
