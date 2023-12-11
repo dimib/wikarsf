@@ -12,5 +12,7 @@
 
 void hello_from_rust(void);
 
+char* md_to_html(const char*);
+
 
 #endif /* HelloFromRust_h */

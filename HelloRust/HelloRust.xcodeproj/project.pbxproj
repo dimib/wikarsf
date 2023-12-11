@@ -13,6 +13,9 @@
 		1D42F1E12B25F41E00E248DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D42F1E02B25F41E00E248DC /* Preview Assets.xcassets */; };
 		1D42F1EB2B25F61500E248DC /* hello_from_rust.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D42F1EA2B25F61500E248DC /* hello_from_rust.c */; };
 		1D42F1F12B25FAD000E248DC /* librs_xcode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D42F1F02B25FAD000E248DC /* librs_xcode.a */; };
+		1D42F1F32B26F99C00E248DC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D42F1F22B26F99C00E248DC /* WebView.swift */; };
+		1D42F1F52B26FB7200E248DC /* libmd_html.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D42F1F42B26FB7200E248DC /* libmd_html.a */; };
+		1D42F1F72B26FC7200E248DC /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D42F1F62B26FC7200E248DC /* Markdown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		1D42F1E92B25F61500E248DC /* hello_from_rust.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hello_from_rust.h; sourceTree = "<group>"; };
 		1D42F1EA2B25F61500E248DC /* hello_from_rust.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = hello_from_rust.c; sourceTree = "<group>"; };
 		1D42F1F02B25FAD000E248DC /* librs_xcode.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librs_xcode.a; path = libs/librs_xcode.a; sourceTree = SOURCE_ROOT; };
+		1D42F1F22B26F99C00E248DC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		1D42F1F42B26FB7200E248DC /* libmd_html.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmd_html.a; path = libs/libmd_html.a; sourceTree = SOURCE_ROOT; };
+		1D42F1F62B26FC7200E248DC /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +39,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D42F1F12B25FAD000E248DC /* librs_xcode.a in Frameworks */,
+				1D42F1F52B26FB7200E248DC /* libmd_html.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +70,8 @@
 				1D42F1DB2B25F41C00E248DC /* ContentView.swift */,
 				1D42F1DD2B25F41E00E248DC /* Assets.xcassets */,
 				1D42F1DF2B25F41E00E248DC /* Preview Content */,
+				1D42F1F22B26F99C00E248DC /* WebView.swift */,
+				1D42F1F62B26FC7200E248DC /* Markdown.swift */,
 			);
 			path = HelloRust;
 			sourceTree = "<group>";
@@ -78,6 +87,7 @@
 		1D42F1E72B25F5BF00E248DC /* HelloFromRust */ = {
 			isa = PBXGroup;
 			children = (
+				1D42F1F42B26FB7200E248DC /* libmd_html.a */,
 				1D42F1F02B25FAD000E248DC /* librs_xcode.a */,
 				1D42F1E92B25F61500E248DC /* hello_from_rust.h */,
 				1D42F1EA2B25F61500E248DC /* hello_from_rust.c */,
@@ -158,6 +168,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D42F1EB2B25F61500E248DC /* hello_from_rust.c in Sources */,
+				1D42F1F72B26FC7200E248DC /* Markdown.swift in Sources */,
+				1D42F1F32B26F99C00E248DC /* WebView.swift in Sources */,
 				1D42F1DC2B25F41C00E248DC /* ContentView.swift in Sources */,
 				1D42F1DA2B25F41C00E248DC /* HelloRustApp.swift in Sources */,
 			);

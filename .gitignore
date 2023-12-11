@@ -3,3 +3,5 @@ hello_rust/target
 md-html-rs/target
 string_spielplatz/target
 md-html/target
+rs-xcode/target
+.DS_Store
