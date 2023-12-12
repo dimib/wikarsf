@@ -16,7 +16,7 @@ pub extern "C" fn md_to_html(input_data: *const c_char) -> *mut c_char {
 
     let mut content = md::create_content(input_data.to_str().unwrap().to_string());
     let tokens = md::tokenizer::tokenize(&mut content);
-    let html = html::generator::generate_html(tokens);
+    let html = html::generator::generate_html(tokens, html::generator::StyleType::Default);
 
     println!("{}", html);
 

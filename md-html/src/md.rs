@@ -14,7 +14,6 @@ use file::read;
 
 pub fn read_content_from_file(path: &String) -> MdContent {
     let md_content = read(path);
-    println!("File contents:\n{}", md_content.content);
     md_content
 }
 

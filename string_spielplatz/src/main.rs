@@ -1,7 +1,8 @@
 use std::collections::LinkedList;
+use regex::Regex;
 
-fn main() {
-    let some_content = "#Headline\n## Headline 2\nHier ist etwas text";
+fn something_with_lists() {
+    let some_content = "#Headline\n## Headline 2\n* Unordered list\n> Blockquote";
     
     println!("{:?}", &some_content[10..].starts_with("## "));
 
@@ -34,4 +35,20 @@ fn main() {
     while let Some(i) = some_vec.pop_back() {
         println!("{:?}", i);
     }
+}
+
+fn something_with_regex() {
+    let some_content = "#Headline\n## Headline 2\n* Unordered list\n> Blockquote";
+
+    let re = Regex::new(r"^\* .*\n").unwrap();
+
+    if re.is_match(&some_content[24..]) {
+        println!("Matched");
+    } else {
+        println!("Not matched");
+    }
+}
+
+fn main() {
+    something_with_regex();
 }

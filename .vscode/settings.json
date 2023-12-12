@@ -1,7 +1,5 @@
 {
     "rust-analyzer.linkedProjects": [
-        "./md-html-rs/Cargo.toml",
-        "./md-html-rs/Cargo.toml",
-        "./md-html-rs-lib/Cargo.toml"
+        "./md-html-rs/Cargo.toml"
     ]
 }
