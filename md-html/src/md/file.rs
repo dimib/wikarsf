@@ -5,11 +5,17 @@ use std::fs;
 use super::content::MdContent;
 
 // Read a file and return a MdContent struct.
-pub fn read(path: &String) -> MdContent {
-    let file_content = fs::read_to_string(path).expect("Unable to read file");
-    MdContent {
-        content: file_content.clone(),
-        content_len: file_content.len(),
-        index: 0,
+pub fn read(path: &String) -> Option::<MdContent> {
+    match fs::read_to_string(path) {
+        Ok(file_content) => {
+            Some(MdContent {
+                content: file_content.clone(),
+                content_len: file_content.len(),
+                index: 0,
+            })
+        },
+        Err(_) => {
+            None
+        },
     }
 }

@@ -25,7 +25,11 @@ fn main() {
         process::exit(1);
     });
 
-    let mut content = read_content_from_file(&input_file);
+    let mut content = read_content_from_file(&input_file)
+        .unwrap_or_else(|| {
+            println!("Problem reading file: {}", input_file);
+            process::exit(1);
+        });
     let tokens = parse(&mut content);
 
     match tokens {

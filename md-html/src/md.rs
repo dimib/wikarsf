@@ -12,7 +12,7 @@ use super::common::tokens::Token;
 
 use file::read;
 
-pub fn read_content_from_file(path: &String) -> MdContent {
+pub fn read_content_from_file(path: &String) -> Option::<MdContent> {
     let md_content = read(path);
     md_content
 }
