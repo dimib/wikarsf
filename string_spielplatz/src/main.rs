@@ -49,6 +49,17 @@ fn something_with_regex() {
     }
 }
 
+fn something_with_regex2() {
+    let some_content = "✍️ hello world";
+    let re = Regex::new("^✍️.*").unwrap();
+
+    if re.is_match(&some_content) {
+        println!("Matched");
+    } else {
+        println!("Not matched");
+    }
+}
+
 fn main() {
-    something_with_regex();
+    something_with_regex2();
 }
