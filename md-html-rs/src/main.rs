@@ -1,12 +1,14 @@
 // MD-HTML-RS
 // A simple markdown to html converter written in Rust
 
+use std::collections::LinkedList;
 use std::env;
 use std::process;
 use md_html::md::{read_content_from_file, parse};
 use md_html::html::generator::generate_html;
 use md_html::html::generator::write_html;
-
+use md_html::html::generator::{StyleType, Pager};
+use md_html::common::tokens::Token;
 use crate::args::MdHtmlArgs;
 
 mod args;
@@ -30,20 +32,38 @@ fn main() {
             println!("Problem reading file: {}", input_file);
             process::exit(1);
         });
-    let tokens = parse(&mut content);
 
-    match tokens {
-        Some(tokens) => {
-            let html = generate_html(tokens, args.styles);
-            match args.output {
-                Some(output_file) => { write_html(html, output_file); },
-                None => { println!("{}", html) },
-            }
+    let tokens = parse(&mut content).unwrap_or_else(|| {
+        println!("File was empty..?: {}", input_file);
+        process::exit(1);
+    });
+
+    match args.pages {
+        true => {
+            write_pages(tokens, args.styles, args.output);
         },
-        None => {},
+        false => {
+            write_one_page(tokens, args.styles, args.output);
+        },
+    }
+}
+
+fn write_one_page(tokens: LinkedList<Token>, style: StyleType, output_file: Option<String>) {
+    let html = generate_html(tokens, style, Pager::OnePage);
+    match output_file {
+        Some(output_file) => { write_html(html, output_file); },
+        None => { println!("{}", html) },
+    }
+}
+
+fn write_pages(tokens: LinkedList<Token>, style: StyleType, output_file: Option<String>) {
+    let html = generate_html(tokens, style, Pager::MultiPage);
+    match output_file {
+        Some(output_file) => { write_html(html, output_file); },
+        None => { println!("{}", html) },
     }
 }
 
 fn show_usage() {
-    println!("Usage: md-html-rs -i <input-file> [-o <output-file>] [--css-href <url>] [--css-file <css-file>] [-v]");
+    println!("Usage: md-html-rs -i <input-file> [-o <output-file>] [--css-href <url>] [--css-file <css-file>] [--pages] [-v]");
 }

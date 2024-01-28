@@ -8,6 +8,7 @@ pub struct MdHtmlArgs {
     pub output: Option::<String>,
     pub styles: StyleType,
     pub verbose: bool,
+    pub pages: bool,
 }
 
 impl MdHtmlArgs {
@@ -21,6 +22,7 @@ impl MdHtmlArgs {
 
         let mut styles = StyleType::Default;
         let mut verbose = false;
+        let mut pages = false;
 
         let mut arg_index: usize = 1;
         while arg_index < args.len() {
@@ -44,6 +46,9 @@ impl MdHtmlArgs {
                     arg_index += 1;
                     styles = StyleType::Inline(args[arg_index].clone());
                 },
+                "--pages" => {
+                    pages = true;
+                },
                 arg => { 
                     return Err(format!("unknown argument: {}", arg));
                 },
@@ -60,6 +65,7 @@ impl MdHtmlArgs {
             output,
             styles, 
             verbose,
+            pages
          })
     }
 }

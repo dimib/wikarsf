@@ -3,83 +3,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="md_html.js"></script>
-<style>
-body {
-    background-color: black;
-    color: white;
-    font-family: sans-serif;
-}
-
-h1 {
-    font-size: very-large;
-    margin-top: 2ch;
-}
-
-h2 {
-    font-size: larger;
-    margin-top: 2ch
-}
-
-h3 {
-    font-size: large;
-}
-
-h4 {
-    font-size: medium;
-}
-
-h5 {
-    font-size: small;
-}
-
-h6 {
-    font-size: small;
-}
-
-code {
-    font-family: monospace;
-    font-size: large;
-    font-style: bold;
-    color:beige;
-}
-
-.codeblock {
-    font-family: monospace;
-    background-color: darkslategrey;
-    font-size: large;
-    font-style: bold;
-    color:beige;
-    padding: 2ch;
-    margin-left: 2ch;
-    margin-right: 2ch;
-    width: 80%;
-    border-radius: 9px;
-}
-
-br {
-    display: block;
-    margin: 10em 0;
-    line-height: 2.5em;
- }
-
- a {
-    color: white;
-    text-decoration: underline;
- }
-
- a :hover {
-    color: red;
-    text-decoration: underline;
- }
-
-a :visited {
-    color: rgb(121, 121, 121);
-    text-decoration: underline;
-}
-</style>
+<link rel="stylesheet" href="md_html.css">
 <title>MD-HTML-RS</title>
 </head>
 <body>
+<div id="page_0" style="display:block">
+
 <h1>What I know about Rust... so far!</h1><hr/>
 <h3>What is Rust?</h3>
 Rust is a <i>Multipurpose System Programming Language</i> with target on System Programming.
@@ -106,6 +35,18 @@ Rust is the second language after "C" that is allowed in Linux kernel code.<br><
 Figma replaces the code for the collaboration platform with Rust and notices a big performance increase by using less resources.<br><br>
 Dropbox rewrites a lot of code for file sharing with Rust.<br><br>
 And more...<br><br>
+<h3>What makes Rust better than others</h3>
+Rust is a very safe / secure language.<br><br>
+<br><br>
+<hr>
+<p><div class="page_nav">
+<a href="javascript:show_page('page_0','page_0')">Previous</a>
+<a href="javascript:show_page('page_0','page_1')">Next</a>
+</div></p>
+
+</div>
+<div id="page_1" style="display:none">
+
 <h1>Installation (very easy)</h1><hr/>
 <h3>See Rust website for installation instructions</h3>
 <a href="https://www.rust-lang.org/tools/install" target="_">https://www.rust-lang.org/tools/install</a><br><br>
@@ -142,6 +83,15 @@ rust-embed = {version = "6.4.0"}
 rand = "0.8"
 gray_matter = "0.2"
 </div></pre></code><br><br>
+<hr>
+<p><div class="page_nav">
+<a href="javascript:show_page('page_1','page_0')">Previous</a>
+<a href="javascript:show_page('page_1','page_2')">Next</a>
+</div></p>
+
+</div>
+<div id="page_2" style="display:none">
+
 <h1>Look, listen and learn</h1><hr/>
 Offical documeintation on <code>doc.rust-lang.org</code><br><br>
 <a href="https://doc.rust-lang.org/book/" target="_">read the book</a><br><br>
@@ -149,6 +99,15 @@ This is also installed with rustup. Read the offline book with <code>rustup docs
 <a href="https://doc.rust-lang.org/rust-by-example/" target="_">rust-by-example</a><br><br>
 Other sources<br><br>
 <a href="https://www.youtube.com/@letsgetrusty" target="_">Let's get rusty - YouTube</a><br><br>
+<hr>
+<p><div class="page_nav">
+<a href="javascript:show_page('page_2','page_1')">Previous</a>
+<a href="javascript:show_page('page_2','page_3')">Next</a>
+</div></p>
+
+</div>
+<div id="page_3" style="display:none">
+
 <h1>Let's code!</h1><hr/><br><br>
 <code><pre><div class="codeblock">// Hello Rust!
 
@@ -254,6 +213,15 @@ Macros must be defined or declared in the source file before they can be used.
 <code><pre><div class="codeblock">#[allow(unused_variables)]
 #[allow(dead_code)]
 </div></pre></code><br><br>
+<hr>
+<p><div class="page_nav">
+<a href="javascript:show_page('page_3','page_2')">Previous</a>
+<a href="javascript:show_page('page_3','page_4')">Next</a>
+</div></p>
+
+</div>
+<div id="page_4" style="display:none">
+
 <h1>Strange Rust concepts</h1><hr/>
 <h2>Module system</h2>
 Some help with modules can be found here
@@ -307,6 +275,15 @@ fn optional_value(yes: bool) -> Option<&'static str> {
 
 </div></pre></code><br><br>
 
+<hr>
+<p><div class="page_nav">
+<a href="javascript:show_page('page_4','page_3')">Previous</a>
+<a href="javascript:show_page('page_4','page_5')">Next</a>
+</div></p>
+
+</div>
+<div id="page_5" style="display:none">
+
 <h1>Multiplatform</h1><hr/>
 Rust can compile binaries for may different targets. The supported targets can be listed with <code>rustup target list</code>.<br><br>
 <code><pre><div class="codeblock">user@mac ~ % rustup target list
@@ -353,5 +330,9 @@ First we need to build our static lib for iOS simulator and / or iPhone.<br><br>
 <code>cargo build --target aarch64-apple-ios-sim</code><br><br>
 Now we find our library here <code>target/aarch64-apple-ios-sim/debug/librs_xcode.a</code>.<br><br>
 This library can be added to our Xcode project.<br><br>
-Important to know is that the library has a size of about 17MB.</body>
+Important to know is that the library has a size of about 17MB.
+<p><div class="page_nav">
+<a href="javascript:show_page('page_5','page_4')">Previous</a></div></p>
+</div>
+</body>
 </html>

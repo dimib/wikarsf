@@ -1,6 +1,6 @@
 use std::path::{Path, PathBuf};
 use md_html::md::{read_content_from_file, parse};
-use md_html::html::generator::{generate_html, StyleType };
+use md_html::html::generator::{generate_html, StyleType, Pager };
 
 #[macro_use] extern crate rocket;
 
@@ -34,7 +34,7 @@ fn load_page(path: &Path) -> Option::<String> {
         Some(mut content) => {
             match parse(&mut content) {
                 Some(tokens) => {
-                    let html = generate_html(tokens, StyleType::Default);
+                    let html = generate_html(tokens, StyleType::Default, Pager::OnePage);
                     Some(html)
                 },
                 None => None,

@@ -5,6 +5,7 @@ pub mod common;
 use std::os::raw::c_char;
 use std::ffi::CString;
 
+use html::generator::{StyleType, Pager};
 #[no_mangle]
 pub extern "C" fn md_to_html(input_data: *const c_char) -> *mut c_char {
 
@@ -16,7 +17,7 @@ pub extern "C" fn md_to_html(input_data: *const c_char) -> *mut c_char {
 
     let mut content = md::create_content(input_data.to_str().unwrap().to_string());
     let tokens = md::tokenizer::tokenize(&mut content);
-    let html = html::generator::generate_html(tokens, html::generator::StyleType::Default);
+    let html = html::generator::generate_html(tokens, StyleType::Default, Pager::OnePage);
 
     println!("{}", html);
 

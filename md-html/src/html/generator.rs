@@ -1,5 +1,6 @@
 // HTML Generator
 
+use std::cmp::max;
 use std::collections::LinkedList;
 use std::fs::File;
 use std::io::Write;
@@ -18,12 +19,23 @@ pub enum StyleType {
     Default,
 }
 
-pub fn generate_html(tokens: LinkedList<Token>, style: StyleType) -> String {
+pub enum Pager {
+    OnePage,
+    MultiPage,
+}
+
+pub fn generate_html(tokens: LinkedList<Token>, style: StyleType, pager: Pager) -> String {
     let mut html = String::new();
     html.push_str("<html>\n");
     html.push_str("<head>\n");
     html.push_str("<meta charset=\"utf-8\">\n");
     html.push_str("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
+    html.push_str("<script src=\"md_html.js\"></script>\n");
+
+    let multi_page = match pager {
+        Pager::OnePage => false,
+        Pager::MultiPage => true,
+    };
 
     match style {
         StyleType::Inline(path) => {
@@ -45,8 +57,27 @@ pub fn generate_html(tokens: LinkedList<Token>, style: StyleType) -> String {
     html.push_str("</head>\n");
     html.push_str("<body>\n");
 
+    let mut page_count: i32 = 0;
+
     for token in tokens {
         match token {
+            Token::TagBegin(tag) if tag.name == "h1" && multi_page => {
+                println!("Page count: {}", page_count);
+                if page_count > 0 {
+                    let html_prev= format!("<a href=\"javascript:show_page('page_{}','page_{}')\">Previous</a>\n", page_count-1, max(0, page_count-2));
+                    let html_next= format!("<a href=\"javascript:show_page('page_{}','page_{}')\">Next</a>\n", page_count-1, page_count);
+                    html.push_str("<hr>");
+                    html.push_str("\n<p><div class=\"page_nav\">\n");
+                    html.push_str(&html_prev);
+                    html.push_str(&html_next);
+                    html.push_str("</div></p>\n");
+                    html.push_str("\n</div>\n");
+                }
+                let display = if page_count == 0 { "block" } else { "none" };
+                html.push_str(format!("<div id=\"page_{}\" style=\"display:{}\">\n\n", page_count, display).as_str());
+                html.push_str(&tag.html);
+                page_count += 1;
+            },
             Token::TagBegin(tag) => {
                 html.push_str(&tag.html);
             },
@@ -64,7 +95,13 @@ pub fn generate_html(tokens: LinkedList<Token>, style: StyleType) -> String {
             },
         }
     }
-
+    if multi_page {
+        let html_prev= format!("<a href=\"javascript:show_page('page_{}','page_{}')\">Previous</a>", page_count-1, page_count-2);
+        html.push_str("\n<p><div class=\"page_nav\">\n");
+        html.push_str(&html_prev);
+        html.push_str("</div></p>\n");
+        html.push_str("</div>\n");
+    }
     html.push_str("</body>\n");
     html.push_str("</html>\n");
     html
