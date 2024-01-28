@@ -7,3 +7,4 @@ rs-xcode/target
 .DS_Store
 md-server/target
 client-rs/target
+macro-spielplatz/target

@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "client-rs"
+		},
+		{
+			"path": "hello_rust"
+		},
+		{
+			"path": "HelloRust"
+		},
+		{
+			"path": "md-html"
+		},
+		{
+			"path": "md-html-rs"
+		},
+		{
+			"path": "md-server"
+		},
+		{
+			"path": "rs-used-in-c"
+		},
+		{
+			"path": "rs-xcode"
+		},
+		{
+			"path": "string_spielplatz"
+		},
+		{
+			"path": "macro-spielplatz"
+		}
+	]
+}
