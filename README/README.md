@@ -45,11 +45,27 @@ Dropbox rewrites a lot of code for file sharing with Rust.
 
 And more...
 
-### What makes Rust better than others
+# What makes Rust better than other programming languages
 
-Rust is a very safe / secure language.
+### Rust is safe
 
+Rust is a very safe / secure language. Programms written in Rust don't have
 
+Dangeling References
+
+*-* Data races
+
+*-* Buffer overflows
+
+*-* Iterator invalidation
+
+*-* Optimized for speed
+
+### But why should I not use Rust
+
+Safety and security has its price. Rust is not easy to learn and it is nearly impossible to quickly write programm / app / web service.
+
+The compiler is quite communicative and gives a lot of information what you made wrong. This could be overwhealming in the beginning and sometimes the errors are not very clear. We will see this later, I'd guess :-) 
 
 # Installation (very easy)
 
@@ -66,6 +82,8 @@ The Rust toolchain installer
 Will be installed in `$HOME/.rustup` (1.2GB)
 
 ### Visual Studio Code Extensions for Rust
+
+Visual Studio Code is a very good IDE for Rust development. There are good plugins available that help programming. Also, the workspace concept works good for larger projects.
 
 [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
 
@@ -110,6 +128,9 @@ rust-embed = {version = "6.4.0"}
 rand = "0.8"
 gray_matter = "0.2"
 ```
+
+Complared with the Swift development environment for MacOS and iOS, which brings most of the features and frameworks for the daily use, Rust has a very small standard library. Everything else must be installed separatelly.
+
 
 # Look, listen and learn
 
@@ -159,24 +180,6 @@ let c1: char = 'a';
 let v: Vec<char> = Vec::new();
 ```
 
-#### Structures
-
-```
-struct Person {
-    name: String,
-    age: u8,
-}
-```
-
-Initializing a structure
-
-```
-let p = Person {
-    name: String::from("John"),
-    age: 20,
-};
-```
-
 #### Enums
 
 ```
@@ -189,7 +192,48 @@ enum Profession {
 }
 ```
 
-#### Traits
+#### Structures
+
+```
+struct Person {
+    name: String,
+    email: String,
+}
+```
+
+Initializing a structure
+
+```
+let p = Person {
+    name: String::from("John Doe"),
+    email: String::from("john.doe@foo.com"),
+};
+```
+
+Structures can have functions, that operate with the attributes of a structure. Functions can be added with `Implementations`.
+
+// Implementation of Printable for Person
+impl Person {
+    fn send_email(&self) {
+        email_service_send_hello(self.email, format!("Hello, {}", self.email));
+    }
+}
+
+### Functions
+
+```
+fn foo(number: i32) -> i32 {
+    let new_number = number * 42;
+    new_number // <= no semicolon here
+}
+
+// Calling foo
+
+let bar = foo(42);
+```
+
+
+# Traits
 
 Rust does not have classes, but structures can implement _traits_. Traits are like protocols in Swift.
 
@@ -217,7 +261,21 @@ fn main() {
 }
 ```
 
-### Using Macros
+# Macros
+
+Rust makes intensive use of macros. 
+
+A good introduction to Rust macros is [The Little Book Of Rust Macros](https://veykril.github.io/tlborm/)
+
+There are 3 different types of macros:
+
+*-* Declaretive macros
+
+*-* Procedural macros
+
+*-* Derive macros
+
+### Declerative macros
 
 ```
 // Defining a simple macro
@@ -249,23 +307,11 @@ macro_rules! hello_user {
 hello!("Paul");
 ```
 
-Macros must be defined or declared in the source file before they can be used.
-### Functions
+The expression list can contain more than one expression or even an unlimited number of expressions. The `vec!()` macro is a good example for macros with unlimited expressions.
 
-```
-fn foo(number: i32) -> i32 {
-    let new_number = number * 42;
-    new_number // <= no semicolon here
-}
-```
-### Built-in features
+Declerative macros must be defined or declared in the source file before they can be used.
 
-#### Lint
 
-```
-#[allow(unused_variables)]
-#[allow(dead_code)]
-```
 
 # Strange Rust concepts
 
@@ -297,7 +343,7 @@ fn ownership_explained() {
 
 ## Lifetime declaration
 
-What is dangling reference?
+What is a dangling reference?
 
 
 A link or pointer to an instruction, table element, index item, etc. that no longer contains the same content. If the reference is not a currently valid address, or if it is valid but there is no content in that location, it may cause the computer to crash if the software is not programmed carefully.

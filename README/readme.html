@@ -35,9 +35,6 @@ Rust is the second language after "C" that is allowed in Linux kernel code.<br><
 Figma replaces the code for the collaboration platform with Rust and notices a big performance increase by using less resources.<br><br>
 Dropbox rewrites a lot of code for file sharing with Rust.<br><br>
 And more...<br><br>
-<h3>What makes Rust better than others</h3>
-Rust is a very safe / secure language.<br><br>
-<br><br>
 <hr>
 <p><div class="page_nav">
 <a href="javascript:show_page('page_0','page_0')">Previous</a>
@@ -46,6 +43,27 @@ Rust is a very safe / secure language.<br><br>
 
 </div>
 <div id="page_1" style="display:none">
+
+<h1>What makes Rust better than other programming languages</h1><hr/>
+<h3>Rust is safe</h3>
+Rust is a very safe / secure language. Programms written in Rust don't have<br><br>
+Dangeling References<br><br>
+<i>-</i> Data races<br><br>
+<i>-</i> Buffer overflows<br><br>
+<i>-</i> Iterator invalidation<br><br>
+<i>-</i> Optimized for speed<br><br>
+<h3>But why should I not use Rust</h3>
+Safety and security has its price. Rust is not easy to learn and it is nearly impossible to quickly write programm / app / web service.<br><br>
+The compiler is quite communicative and gives a lot of information what you made wrong. This could be overwhealming in the beginning and sometimes the errors are not very clear. We will see this later, I'd guess :-) <br><br>
+<br><br>
+<hr>
+<p><div class="page_nav">
+<a href="javascript:show_page('page_1','page_0')">Previous</a>
+<a href="javascript:show_page('page_1','page_2')">Next</a>
+</div></p>
+
+</div>
+<div id="page_2" style="display:none">
 
 <h1>Installation (very easy)</h1><hr/>
 <h3>See Rust website for installation instructions</h3>
@@ -85,12 +103,12 @@ gray_matter = "0.2"
 </div></pre></code><br><br>
 <hr>
 <p><div class="page_nav">
-<a href="javascript:show_page('page_1','page_0')">Previous</a>
-<a href="javascript:show_page('page_1','page_2')">Next</a>
+<a href="javascript:show_page('page_2','page_1')">Previous</a>
+<a href="javascript:show_page('page_2','page_3')">Next</a>
 </div></p>
 
 </div>
-<div id="page_2" style="display:none">
+<div id="page_3" style="display:none">
 
 <h1>Look, listen and learn</h1><hr/>
 Offical documeintation on <code>doc.rust-lang.org</code><br><br>
@@ -101,12 +119,12 @@ Other sources<br><br>
 <a href="https://www.youtube.com/@letsgetrusty" target="_">Let's get rusty - YouTube</a><br><br>
 <hr>
 <p><div class="page_nav">
-<a href="javascript:show_page('page_2','page_1')">Previous</a>
-<a href="javascript:show_page('page_2','page_3')">Next</a>
+<a href="javascript:show_page('page_3','page_2')">Previous</a>
+<a href="javascript:show_page('page_3','page_4')">Next</a>
 </div></p>
 
 </div>
-<div id="page_3" style="display:none">
+<div id="page_4" style="display:none">
 
 <h1>Let's code!</h1><hr/><br><br>
 <code><pre><div class="codeblock">// Hello Rust!
@@ -176,6 +194,8 @@ fn main() {
 }
 </div></pre></code><br><br>
 <h3>Using Macros</h3>
+Rust makes intensive use of macros. <br><br>
+<br><br>
 <code><pre><div class="codeblock">// Defining a simple macro
 macro_rules! hello {
     () => {
@@ -201,7 +221,7 @@ macro_rules! hello_user {
 
 hello!("Paul");
 </div></pre></code><br><br>
-Macros must be defined or declared in the source file before they can be used.
+Macros must be defined or declared in the source file before they can be used.<br><br>
 <h3>Functions</h3>
 <code><pre><div class="codeblock">fn foo(number: i32) -> i32 {
     let new_number = number * 42;
@@ -215,12 +235,12 @@ Macros must be defined or declared in the source file before they can be used.
 </div></pre></code><br><br>
 <hr>
 <p><div class="page_nav">
-<a href="javascript:show_page('page_3','page_2')">Previous</a>
-<a href="javascript:show_page('page_3','page_4')">Next</a>
+<a href="javascript:show_page('page_4','page_3')">Previous</a>
+<a href="javascript:show_page('page_4','page_5')">Next</a>
 </div></p>
 
 </div>
-<div id="page_4" style="display:none">
+<div id="page_5" style="display:none">
 
 <h1>Strange Rust concepts</h1><hr/>
 <h2>Module system</h2>
@@ -277,12 +297,12 @@ fn optional_value(yes: bool) -> Option<&'static str> {
 
 <hr>
 <p><div class="page_nav">
-<a href="javascript:show_page('page_4','page_3')">Previous</a>
-<a href="javascript:show_page('page_4','page_5')">Next</a>
+<a href="javascript:show_page('page_5','page_4')">Previous</a>
+<a href="javascript:show_page('page_5','page_6')">Next</a>
 </div></p>
 
 </div>
-<div id="page_5" style="display:none">
+<div id="page_6" style="display:none">
 
 <h1>Multiplatform</h1><hr/>
 Rust can compile binaries for may different targets. The supported targets can be listed with <code>rustup target list</code>.<br><br>
@@ -332,7 +352,7 @@ Now we find our library here <code>target/aarch64-apple-ios-sim/debug/librs_xcod
 This library can be added to our Xcode project.<br><br>
 Important to know is that the library has a size of about 17MB.
 <p><div class="page_nav">
-<a href="javascript:show_page('page_5','page_4')">Previous</a></div></p>
+<a href="javascript:show_page('page_6','page_5')">Previous</a></div></p>
 </div>
 </body>
 </html>

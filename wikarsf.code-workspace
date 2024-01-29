@@ -1,36 +1,55 @@
 {
 	"folders": [
 		{
+			"name": "client-rs",
 			"path": "client-rs"
 		},
 		{
+			"name": "hello_rust",
 			"path": "hello_rust"
 		},
 		{
+			"name": "HelloRust",
 			"path": "HelloRust"
 		},
 		{
+			"name": "md-html",
 			"path": "md-html"
 		},
 		{
+			"name": "md-html-rs",
 			"path": "md-html-rs"
 		},
 		{
+			"name": "md-server",
 			"path": "md-server"
 		},
 		{
+			"name": "rs-used-in-c",
 			"path": "rs-used-in-c"
 		},
 		{
+			"name": "rs-xcode",
 			"path": "rs-xcode"
 		},
 		{
+			"name": "string_spielplatz",
 			"path": "string_spielplatz"
 		},
 		{
+			"name": "macro-spielplatz",
 			"path": "macro-spielplatz"
 		},
 		{
+			"name": "macro-demo-derive",
+			"path": "macro-demo-derive"
+		},
+		{
+			"name": "macro-demo-trait",
+			"path": "macro-demo-trait"
+		},
+		{
+			"name": "README",
 			"path": "README"
 		}
 	]

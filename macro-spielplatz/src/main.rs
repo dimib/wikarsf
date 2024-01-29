@@ -1,6 +1,15 @@
 mod mymacros;
+use demo_derive::DemoDerive;
+use demo_trait::DemoTrait;
 use mymacros::foo;
 use mymacros::bar;
+
+#[derive(DemoDerive)]
+struct Foo { }
+
+#[derive(DemoDerive)]
+struct Bar { }
+
 
 #[allow(special_module_name)]
 
@@ -26,4 +35,10 @@ fn main() {
 
     let v = vecxx![1, 2, 3];
     v.iter().for_each(|x| println!("{}", x));
+
+    let foo = Foo {};
+    foo.demo();
+
+    let bar = Bar {};
+    bar.demo();
 }
