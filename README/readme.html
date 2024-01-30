@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="md_html.js"></script>
-<link rel="stylesheet" href="md_html.css">
+<link rel="stylesheet" href="../README/md_html.css">
 <title>MD-HTML-RS</title>
 </head>
 <body>
@@ -55,7 +55,6 @@ Dangeling References<br><br>
 <h3>But why should I not use Rust</h3>
 Safety and security has its price. Rust is not easy to learn and it is nearly impossible to quickly write programm / app / web service.<br><br>
 The compiler is quite communicative and gives a lot of information what you made wrong. This could be overwhealming in the beginning and sometimes the errors are not very clear. We will see this later, I'd guess :-) <br><br>
-<br><br>
 <hr>
 <p><div class="page_nav">
 <a href="javascript:show_page('page_1','page_0')">Previous</a>
@@ -74,6 +73,7 @@ The Rust toolchain installer
 </div></pre></code><br><br>
 Will be installed in <code>$HOME/.rustup</code> (1.2GB)<br><br>
 <h3>Visual Studio Code Extensions for Rust</h3>
+Visual Studio Code is a very good IDE for Rust development. There are good plugins available that help programming. Also, the workspace concept works good for larger projects.<br><br>
 <a href="https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer" target="_">rust-analyzer</a><br><br>
 <a href="https://marketplace.visualstudio.com/items?itemName=1YiB.rust-bundle" target="_">rust extension</a><br><br>
 <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot" target="_">github copilot</a><br><br>
@@ -101,6 +101,8 @@ rust-embed = {version = "6.4.0"}
 rand = "0.8"
 gray_matter = "0.2"
 </div></pre></code><br><br>
+Complared with the Swift development environment for MacOS and iOS, which brings most of the features and frameworks for the daily use, Rust has a very small standard library. Everything else must be installed separatelly.<br><br>
+
 <hr>
 <p><div class="page_nav">
 <a href="javascript:show_page('page_2','page_1')">Previous</a>
@@ -148,18 +150,9 @@ let s2: String = String::from("hello");
 let c1: char = 'a';
 let v: Vec<char> = Vec::new();
 </div></pre></code><br><br>
-<h4>Structures</h4>
-<code><pre><div class="codeblock">struct Person {
-    name: String,
-    age: u8,
-}
-</div></pre></code><br><br>
-Initializing a structure<br><br>
-<code><pre><div class="codeblock">let p = Person {
-    name: String::from("John"),
-    age: 20,
-};
-</div></pre></code><br><br>
+<code>&str</code> is called a string slice and is allocated on stack memory.<br><br>
+<code>Strings</code> are allocated on heap memory.<br><br>
+
 <h4>Enums</h4>
 <code><pre><div class="codeblock">enum Profession {
     ProductOwner,
@@ -169,7 +162,51 @@ Initializing a structure<br><br>
     UiDesgner,
 }
 </div></pre></code><br><br>
-<h4>Traits</h4>
+<h4>Structures</h4>
+<code><pre><div class="codeblock">struct Person {
+    name: String,
+    email: String,
+}
+</div></pre></code><br><br>
+Initializing a structure<br><br>
+<code><pre><div class="codeblock">let p = Person {
+    name: String::from("John Doe"),
+    email: String::from("john.doe@foo.com"),
+};
+</div></pre></code><br><br>
+Structures can have functions, that operate with the attributes of a structure. Functions can be added with <code>Implementations</code>.<br><br>
+<code><pre><div class="codeblock">// Implementation of Person
+impl Person {
+    fn send_email(&self) {
+        send_hello_mail(self.email, format!("Hello, {}", self.email));
+    }
+}
+
+let person = Person(...);
+person.send_hello_mail();
+
+</div></pre></code>
+<h3>Functions</h3>
+<code><pre><div class="codeblock">fn foo(number: i32) -> i32 {
+    let new_number = number * 42;
+    new_number // <= no semicolon here
+}
+
+// Calling foo
+
+let bar = foo(42);
+</div></pre></code><br><br>
+
+<hr>
+<p><div class="page_nav">
+<a href="javascript:show_page('page_4','page_3')">Previous</a>
+<a href="javascript:show_page('page_4','page_5')">Next</a>
+</div></p>
+
+</div>
+<div id="page_5" style="display:none">
+
+<h1>Traits</h1><hr/>
 Rust does not have classes, but structures can implement <i>traits</i>. Traits are like protocols in Swift.<br><br>
 <code><pre><div class="codeblock">// Sample Printable trait
 trait Printable {
@@ -193,9 +230,23 @@ fn main() {
     p.print();
 }
 </div></pre></code><br><br>
-<h3>Using Macros</h3>
+<hr>
+<p><div class="page_nav">
+<a href="javascript:show_page('page_5','page_4')">Previous</a>
+<a href="javascript:show_page('page_5','page_6')">Next</a>
+</div></p>
+
+</div>
+<div id="page_6" style="display:none">
+
+<h1>Macros</h1><hr/>
 Rust makes intensive use of macros. <br><br>
-<br><br>
+A good introduction to Rust macros is <a href="https://veykril.github.io/tlborm/" target="_">The Little Book Of Rust Macros</a><br><br>
+There are 3 different types of macros:<br><br>
+<i>-</i> Declaretive macros<br><br>
+<i>-</i> Procedural macros<br><br>
+<i>-</i> Derive macros<br><br>
+<h3>Declerative macros</h3>
 <code><pre><div class="codeblock">// Defining a simple macro
 macro_rules! hello {
     () => {
@@ -221,26 +272,17 @@ macro_rules! hello_user {
 
 hello!("Paul");
 </div></pre></code><br><br>
-Macros must be defined or declared in the source file before they can be used.<br><br>
-<h3>Functions</h3>
-<code><pre><div class="codeblock">fn foo(number: i32) -> i32 {
-    let new_number = number * 42;
-    new_number // <= no semicolon here
-}
-</div></pre></code>
-<h3>Built-in features</h3>
-<h4>Lint</h4>
-<code><pre><div class="codeblock">#[allow(unused_variables)]
-#[allow(dead_code)]
-</div></pre></code><br><br>
+The expression list can contain more than one expression or even an unlimited number of expressions. The <code>vec!()</code> macro is a good example for macros with unlimited expressions.<br><br>
+Declerative macros must be defined or declared in the source file before they can be used.<br><br>
+<br><br>
 <hr>
 <p><div class="page_nav">
-<a href="javascript:show_page('page_4','page_3')">Previous</a>
-<a href="javascript:show_page('page_4','page_5')">Next</a>
+<a href="javascript:show_page('page_6','page_5')">Previous</a>
+<a href="javascript:show_page('page_6','page_7')">Next</a>
 </div></p>
 
 </div>
-<div id="page_5" style="display:none">
+<div id="page_7" style="display:none">
 
 <h1>Strange Rust concepts</h1><hr/>
 <h2>Module system</h2>
@@ -261,8 +303,7 @@ Rust implements a system of ownership and borrowing mechanism that prevents usin
 }
 </div></pre></code><br><br>
 <h2>Lifetime declaration</h2>
-What is dangling reference?<br><br>
-
+What is a dangling reference?<br><br>
 A link or pointer to an instruction, table element, index item, etc. that no longer contains the same content. If the reference is not a currently valid address, or if it is valid but there is no content in that location, it may cause the computer to crash if the software is not programmed carefully.<br><br>
 <code>fn longest<'a>(str1: &'a str, str2: &'a str) -> &'a str { }</code><br><br>
 <a href="https://www.youtube.com/watch?v=juIINGuZyBc" target="_">https://www.youtube.com/watch?v=juIINGuZyBc</a><br><br>
@@ -297,12 +338,12 @@ fn optional_value(yes: bool) -> Option<&'static str> {
 
 <hr>
 <p><div class="page_nav">
-<a href="javascript:show_page('page_5','page_4')">Previous</a>
-<a href="javascript:show_page('page_5','page_6')">Next</a>
+<a href="javascript:show_page('page_7','page_6')">Previous</a>
+<a href="javascript:show_page('page_7','page_8')">Next</a>
 </div></p>
 
 </div>
-<div id="page_6" style="display:none">
+<div id="page_8" style="display:none">
 
 <h1>Multiplatform</h1><hr/>
 Rust can compile binaries for may different targets. The supported targets can be listed with <code>rustup target list</code>.<br><br>
@@ -352,7 +393,7 @@ Now we find our library here <code>target/aarch64-apple-ios-sim/debug/librs_xcod
 This library can be added to our Xcode project.<br><br>
 Important to know is that the library has a size of about 17MB.
 <p><div class="page_nav">
-<a href="javascript:show_page('page_6','page_5')">Previous</a></div></p>
+<a href="javascript:show_page('page_8','page_7')">Previous</a></div></p>
 </div>
 </body>
 </html>

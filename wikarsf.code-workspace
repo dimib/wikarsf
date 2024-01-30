@@ -51,6 +51,9 @@
 		{
 			"name": "README",
 			"path": "README"
+		},
+		{
+			"path": "hello_cocoaheads"
 		}
 	]
 }

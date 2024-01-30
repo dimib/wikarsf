@@ -180,6 +180,11 @@ let c1: char = 'a';
 let v: Vec<char> = Vec::new();
 ```
 
+`&str` is called a string slice and is allocated on stack memory.
+
+`Strings` are allocated on heap memory.
+
+
 #### Enums
 
 ```
@@ -212,13 +217,18 @@ let p = Person {
 
 Structures can have functions, that operate with the attributes of a structure. Functions can be added with `Implementations`.
 
-// Implementation of Printable for Person
+```
+// Implementation of Person
 impl Person {
     fn send_email(&self) {
-        email_service_send_hello(self.email, format!("Hello, {}", self.email));
+        send_hello_mail(self.email, format!("Hello, {}", self.email));
     }
 }
 
+let person = Person(...);
+person.send_hello_mail();
+
+```
 ### Functions
 
 ```
@@ -344,7 +354,6 @@ fn ownership_explained() {
 ## Lifetime declaration
 
 What is a dangling reference?
-
 
 A link or pointer to an instruction, table element, index item, etc. that no longer contains the same content. If the reference is not a currently valid address, or if it is valid but there is no content in that location, it may cause the computer to crash if the software is not programmed carefully.
 
